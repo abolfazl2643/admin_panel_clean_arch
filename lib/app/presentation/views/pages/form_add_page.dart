@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/themes/style.dart';
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/widgets/text_field.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/list_item_controller.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/selected_image_controller.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/themes/style.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';

@@ -1,6 +1,6 @@
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/themes/style.dart';
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/widgets/searchbar.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/list_item_controller.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/themes/style.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

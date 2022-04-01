@@ -1,4 +1,4 @@
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/themes/style.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/themes/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

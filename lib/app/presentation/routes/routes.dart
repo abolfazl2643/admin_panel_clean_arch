@@ -1,5 +1,5 @@
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/pages/form_add_page.dart';
-import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/pages/main_page.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/pages/form_add_page.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/pages/main_page.dart';
 import 'package:get/get_navigation/get_navigation.dart' as trans;
 import 'package:get/get_navigation/get_navigation.dart';
 
