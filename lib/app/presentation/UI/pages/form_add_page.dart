@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/themes/style.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/UI/widgets/text_field.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/list_item_controller.dart';
@@ -102,9 +101,7 @@ class _AddPersonFormState extends State<AddPersonForm> {
     );
     if (image != null) {
       final bytes = File(image.path).readAsBytesSync();
-
       String img64 = base64Encode(bytes);
-
       uploadImageController.getImage(img64);
     } else {
       print('picked image is null');
