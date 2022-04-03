@@ -1,9 +1,9 @@
 import 'package:get/state_manager.dart';
 
-class UploadImageController extends GetxController {
-  var imagebyteCode = ''.obs;
+class SelectedImageController extends GetxController {
+  var byteImage = ''.obs;
 
-  void getImage(String image) {
-    imagebyteCode.value = image;
+  void setImage(String image) {
+    byteImage.value = image;
   }
 }

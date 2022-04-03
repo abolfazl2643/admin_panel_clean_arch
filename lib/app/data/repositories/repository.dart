@@ -3,7 +3,7 @@ import 'package:espad_flutter_task_abolfazlrezaei/app/domain/interfaces/base_rep
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/list_item_controller.dart';
 import 'package:get/get.dart';
 
-abstract class Repository implements BaseRepository {
+class PersonRepository implements BaseRepository {
   //no api call or real database yet!
   var listItemController = Get.put(ListItemController());
 
