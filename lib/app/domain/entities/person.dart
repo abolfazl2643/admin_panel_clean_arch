@@ -6,7 +6,7 @@ class Person {
   final String address;
   final String mobile;
   final String photo;
-  final bool isChecked;
+  bool isChecked;
   final bool approved;
 
   Person({

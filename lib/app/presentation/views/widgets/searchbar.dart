@@ -1,3 +1,5 @@
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/list_item_controller.dart';
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/states/search_result_controller.dart';
 import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/themes/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,9 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
+  final personList = Get.put(ListItemController());
+  final searchResult = Get.put(SearchController());
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,11 +36,10 @@ class _SearchBarState extends State<SearchBar> {
           shadowColor: Colors.grey,
           child: TextField(
             controller: widget.textEditingController,
-            style: TextStyle(
-                backgroundColor: Colors.white,
-                fontSize: Get.width / 27,
-                fontWeight: FontWeight.w300),
-            onSubmitted: (value) {},
+            style: searchFieldTextStyle,
+            onSubmitted: (value) {
+              getSearchResult(widget.textEditingController.text);
+            },
             textAlign: TextAlign.right,
             decoration: InputDecoration(
               fillColor: Colors.white,
@@ -46,17 +50,24 @@ class _SearchBarState extends State<SearchBar> {
                   size: Get.width / 15,
                   color: Colors.grey,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  getSearchResult(widget.textEditingController.text);
+                },
               ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: 10.0,
-                horizontal: 10.0,
-              ),
+              contentPadding: searchFieldContentPadding,
               enabledBorder: searchFieldEnabledBorder,
             ),
           ),
         ),
       ),
     );
+  }
+
+  void getSearchResult(String keyword) {
+    var searchedReslut = personList.list
+        .where((person) => person.name == keyword || person.isChecked == true)
+        .toList();
+    searchResult.isSearchResult.value = true;
+    searchResult.list.value = searchedReslut;
   }
 }

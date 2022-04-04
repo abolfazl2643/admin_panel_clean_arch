@@ -1,3 +1,4 @@
+import 'package:espad_flutter_task_abolfazlrezaei/app/presentation/views/themes/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,34 +29,11 @@ class _FormTextFieldState extends State<FormTextField> {
         width: Get.width / 1.6,
         child: TextFormField(
           controller: widget.controller,
-          onFieldSubmitted: (value) {
-            FocusScope.of(context).unfocus();
-          },
-          minLines: 1,
-          validator: (value) {
-            return null;
-          },
+          onFieldSubmitted: (value) => FocusScope.of(context).unfocus(),
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.start,
-          style: TextStyle(
-              backgroundColor: Colors.transparent,
-              fontSize: Get.width / 27,
-              fontWeight: FontWeight.w300),
-          decoration: InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 10.0,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
-                color: Color.fromRGBO(112, 112, 112, 0.2),
-                width: 2.0,
-              ),
-            ),
-          ),
+          style: formFieldStyle,
+          decoration: formFieldDecoration,
         ),
       ),
     );
