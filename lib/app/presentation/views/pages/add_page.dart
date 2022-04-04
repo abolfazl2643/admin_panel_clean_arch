@@ -134,7 +134,8 @@ class _AddPersonPageState extends State<AddPersonPage> {
                           address: addressTextEditingController.text,
                           mobile: mobileTextEditingController.text,
                           photo: selectedImageController.byteImage.toString(),
-                          isChecked: true));
+                          isChecked: true,
+                          approved: false));
                       Get.toNamed('/');
                     },
                     child: const Padding(

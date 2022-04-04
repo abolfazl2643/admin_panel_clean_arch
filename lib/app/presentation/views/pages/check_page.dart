@@ -19,8 +19,25 @@ class _CheckPersonPageState extends State<CheckPersonPage> {
   final selectedImageController = Get.put(SelectedImageController());
   final PersonRepository repository = PersonRepository();
 
+  var nameApproved = false;
+  var familyApproved = false;
+  var mobileApproved = false;
+  var idApproved = false;
+  var birthApproved = false;
+  var addressApproved = false;
+  var photoApproved = false;
+
   @override
   Widget build(BuildContext context) {
+    var approveList = [
+      nameApproved,
+      familyApproved,
+      mobileApproved,
+      idApproved,
+      birthApproved,
+      addressApproved,
+      photoApproved,
+    ];
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -28,61 +45,113 @@ class _CheckPersonPageState extends State<CheckPersonPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Name:'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].name),
-                Switch(value: true, onChanged: (bool) async {})
+                Switch(
+                    value: nameApproved,
+                    onChanged: (switchState) async {
+                      setState(() {
+                        nameApproved = switchState;
+                      });
+                    })
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Family Name:'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].familyName),
+                Switch(
+                  value: familyApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      familyApproved = switchState;
+                    });
+                  },
+                )
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Mobile:'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].mobile),
+                Switch(
+                  value: mobileApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      mobileApproved = switchState;
+                    });
+                  },
+                )
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Id No. :'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].idNumber),
+                Switch(
+                  value: idApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      idApproved = switchState;
+                    });
+                  },
+                )
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Birth date:'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].birthDate),
+                Switch(
+                  value: birthApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      birthApproved = switchState;
+                    });
+                  },
+                )
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Address:'),
                 const SizedBox(width: 100),
                 Text(personList.list[personList.personIndex.value].address),
+                Switch(
+                  value: addressApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      addressApproved = switchState;
+                    });
+                  },
+                )
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Profile Pic : '),
                 SizedBox(
-                  width: Get.width / 1.6,
+                  width: Get.width / 1.8,
                   height: 200,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 100.0),
@@ -101,6 +170,14 @@ class _CheckPersonPageState extends State<CheckPersonPage> {
                                     ),
                         )),
                   ),
+                ),
+                Switch(
+                  value: photoApproved,
+                  onChanged: (switchState) async {
+                    setState(() {
+                      photoApproved = switchState;
+                    });
+                  },
                 )
               ],
             ),
@@ -138,22 +215,34 @@ class _CheckPersonPageState extends State<CheckPersonPage> {
                     primary: Colors.white,
                   ),
                   onPressed: () {
-                    repository.add(Person(
-                        idNumber: personList
-                            .list[personList.personIndex.value].idNumber,
-                        name:
-                            personList.list[personList.personIndex.value].name,
-                        familyName: personList
-                            .list[personList.personIndex.value].familyName,
-                        birthDate: personList
-                            .list[personList.personIndex.value].birthDate,
-                        address: personList
-                            .list[personList.personIndex.value].address,
-                        mobile: personList
-                            .list[personList.personIndex.value].mobile,
-                        photo:
-                            personList.list[personList.personIndex.value].photo,
-                        isChecked: true));
+                    bool approved = true;
+
+                    for (var element in approveList) {
+                      if (element == false) {
+                        approved = false;
+                      }
+                    }
+
+                    repository.update(
+                      editedPerson: Person(
+                          idNumber: personList
+                              .list[personList.personIndex.value].idNumber,
+                          name: personList
+                              .list[personList.personIndex.value].name,
+                          familyName: personList
+                              .list[personList.personIndex.value].familyName,
+                          birthDate: personList
+                              .list[personList.personIndex.value].birthDate,
+                          address: personList
+                              .list[personList.personIndex.value].address,
+                          mobile: personList
+                              .list[personList.personIndex.value].mobile,
+                          photo: personList
+                              .list[personList.personIndex.value].photo,
+                          isChecked: true,
+                          approved: approved),
+                      index: personList.personIndex.value,
+                    );
 
                     Get.toNamed('/');
                   },

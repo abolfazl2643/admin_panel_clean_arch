@@ -7,8 +7,10 @@ class Person {
   final String mobile;
   final String photo;
   final bool isChecked;
+  final bool approved;
 
   Person({
+    required this.approved,
     required this.idNumber,
     required this.name,
     required this.familyName,

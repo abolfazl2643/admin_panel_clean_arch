@@ -195,9 +195,11 @@ class _MainPageState extends State<MainPage> {
                 right: 15,
                 child: Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.sell,
-                      color: Colors.red,
+                      color: listItemController.list[index].approved
+                          ? Colors.green
+                          : Colors.red,
                     ),
                     const SizedBox(width: 100),
                     TextButton(
@@ -209,7 +211,10 @@ class _MainPageState extends State<MainPage> {
                         backgroundColor: submitButtonColor,
                         primary: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        listItemController.personIndex.value = index;
+                        Get.toNamed('/check-page');
+                      },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 30.0),
                         child: Text("check"),
